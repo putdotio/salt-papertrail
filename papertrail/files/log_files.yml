@@ -1,0 +1,31 @@
+files:
+  {% for file in log_files -%}
+  - {{ file }}
+  {% endfor %}
+
+{% if hostname is defined -%}
+hostname: {{ hostname }}
+{% endif %}
+
+{% if new_file_check_interval is defined -%}
+new_file_check_interval: {{ new_file_check_interval }}
+{% endif %}
+
+{% if exclude_files is defined -%}
+exclude_files:
+  {% for file in exclude_files -%}
+  - {{ file }}
+  {% endfor %}
+{% endif %}
+
+{% if exclude_patterns is defined -%}
+exclude_patterns:
+  {% for pattern in exclude_patterns -%}
+  - {{ pattern }}
+  {% endfor %}
+{% endif %}
+
+destination:
+  host: {{ destination_host }}
+  port: {{ destination_port }}
+  protocol: {{ destination_protocol }}

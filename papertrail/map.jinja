@@ -1,0 +1,37 @@
+{## Start with defaults from defaults.yaml ##}
+{% import_yaml 'papertrail/defaults.yaml' as default_settings %}
+
+{% set os_map = salt['grains.filter_by']({
+        'Debian': {
+            'pkg_name': 'remote-syslog2',
+            'pkg_prefix': 'remote-syslog2_',
+            'pkg_suffix': '_amd64.deb'
+        },
+        'Ubuntu': {
+            'pkg_name': 'remote-syslog2',
+            'pkg_prefix': 'remote-syslog2_',
+            'pkg_suffix': '_amd64.deb'
+        },
+        'Amazon': {
+            'pkg_name': 'remote_syslog2',
+            'pkg_prefix': 'remote_syslog2-',
+            'pkg_suffix': '-1.x86_64.rpm'
+        },
+        'RedHat': {
+            'pkg_name': 'remote_syslog2',
+            'pkg_prefix': 'remote_syslog2-',
+            'pkg_suffix': '-1.x86_64.rpm'
+        },
+        'CentOS': {
+            'pkg_name': 'remote_syslog2',
+            'pkg_prefix': 'remote_syslog2-',
+            'pkg_suffix': '-1.x86_64.rpm'
+        }
+  }, grain='os', merge=salt['pillar.get']('papertrail:lookup'))
+%}
+
+{## Merge the os_map to the default settings ##}
+{% do default_settings.papertrail.update(os_map) %}
+
+{## Merge in papertrail:lookup pillar ##}
+{% set papertrail = salt['pillar.get']('papertrail', default=default_settings.papertrail, merge=True) %}

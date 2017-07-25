@@ -1,0 +1,4 @@
+papertrail:
+  version: '0.19'
+  files: []
+  destination_protocol: 'tls'

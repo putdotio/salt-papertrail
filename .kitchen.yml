@@ -1,0 +1,41 @@
+driver:
+  name: vagrant
+
+provisioner:
+  name: salt_solo
+  formula: papertrail
+  pillars-from-files:
+    papertrail.sls: test-pillar.yml
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - papertrail
+  state_top:
+    base:
+      '*':
+        - papertrail
+
+platforms:
+  - name: centos-6.9
+  - name: centos-7.3
+  - name: amazonlinux-2017.03
+    driver:
+      name: ec2
+      image_id: ami-6df1e514
+      aws_ssh_key_id: test-kitchen
+      region: us-west-2
+      availability_zone: a
+      require_chef_omnibus: true
+      instance_type: t2.medium
+      associate_public_ip: true
+      interface: dns
+    transport:
+      username: ec2-user
+      ssh_key: ~/.ssh/id_rsa
+  - name: debian-9.0
+  - name: ubuntu-14.04
+  - name: ubuntu-16.04
+
+suites:
+  - name: default
