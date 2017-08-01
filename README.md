@@ -1,6 +1,6 @@
 # Papertrail Formula
 
-This [formula](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html) configures the Papertrail [remote_syslog2](https://github.com/papertrail/remote_syslog2) agent. If you want to configure `rsyslog` for use with Papertrail, check out the [documentation on the Papertrail website](http://help.papertrailapp.com/kb/configuration/configuring-remote-syslog-from-unixlinux-and-bsdos-x/).
+This [formula](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html) configures the Papertrail [remote_syslog2](https://github.com/papertrail/remote_syslog2) agent. To configure `rsyslog` for use with Papertrail, check out the [Papertrail documentation](http://help.papertrailapp.com/kb/configuration/configuring-remote-syslog-from-unixlinux-and-bsdos-x/).
 
 ## Supported Platforms
 
@@ -22,8 +22,8 @@ papertrail:
   files:
     - /var/log/syslog
     - /var/log/apache2/*.log
-  destination_host: YOUR-HOST-HERE
-  destination_port: YOUR-PORT-HERE
+  destination_host: logsN.papertrailapp.com
+  destination_port: XXXXX
 ```
 
 2. Include `papertrail` in your state file or `top.sls`, depending on which ever you prefer.
@@ -43,7 +43,7 @@ base:
     - papertrail
 ```
 
-This will install `remote_syslog2` with the configured settings you set in Pillar.
+This will install `remote_syslog2` with the configured settings from Pillar.
 
 ## Pillar attributes
 
@@ -99,13 +99,13 @@ This Salt formula only has one state, which does all setup and configuration. Th
 
 - `destination_host`, `destination_port`, & `destination_protocol`
 
-  The Papertrail host, port, and protocol for sending your logs to. These are required. Protocol defaults to `tls`.
+  The Papertrail host and port to send logs to, and the protocol to use. These are required. Protocol defaults to `tls`.
 
   Example:
   ```yaml
   papertrail:
-    destination_host: YOUR-HOST-HERE
-    destination_port: YOUR-PORT-HERE
+    destination_host: logsN.papertrailapp.com
+    destination_port: XXXXX
     destination_protocol: 'tls'
   ```
 
@@ -153,7 +153,7 @@ This Salt formula only has one state, which does all setup and configuration. Th
 
 ### Unit tests
 
-No unit tests are written at this time.
+No unit tests exist at this time.
 
 ### Integration tests
 
