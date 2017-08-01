@@ -28,7 +28,9 @@ describe file('/etc/log_files.yml') do
         'port' => 6500,
         'protocol' => 'tls'
       ),
-      'new_file_check_interval' => 30
+      'new_file_check_interval' => 30,
+      'facility' => 'local7',
+      'severity' => 'warn'
     )
   }
 end

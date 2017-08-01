@@ -119,6 +119,26 @@ This Salt formula only has one state, which does all setup and configuration. Th
     new_file_check_interval: 30
   ```
 
+- `severity`
+
+  Overrides the default `remote_syslog2` severity level.
+
+  Example:
+  ```yaml
+  papertrail:
+    severity: warn
+  ```
+
+- `facility`
+
+  Overrides the default `remote_syslog2` facility.
+
+  Example:
+  ```yaml
+  papertrail:
+    facility: local7
+  ```
+
 - `version`
 
   Use a different version of `remote_syslog` than the default. The default is specified in `map.jinja`.

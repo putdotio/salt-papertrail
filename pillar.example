@@ -16,4 +16,6 @@ papertrail:
   destination_port: 6500
   destination_protocol: 'tls'
   new_file_check_interval: 30
+  facility: local7
+  severity: warn
   version: '0.19'

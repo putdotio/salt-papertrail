@@ -25,6 +25,14 @@ exclude_patterns:
   {% endfor %}
 {% endif -%}
 
+{% if facility is defined -%}
+facility: {{ facility }}
+{% endif -%}
+
+{% if severity is defined -%}
+severity: {{ severity }}
+{% endif -%}
+
 destination:
   host: {{ destination_host }}
   port: {{ destination_port }}

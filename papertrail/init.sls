@@ -33,6 +33,12 @@
       {% if papertrail.new_file_check_interval is defined %}
       new_file_check_interval: {{ papertrail.new_file_check_interval }}
       {% endif %}
+      {% if papertrail.facility is defined %}
+      facility: {{ papertrail.facility }}
+      {% endif %}
+      {% if papertrail.severity is defined %}
+      severity: {{ papertrail.severity }}
+      {% endif %}
 
 remote_syslog:
   service:
