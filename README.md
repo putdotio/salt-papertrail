@@ -26,11 +26,21 @@ papertrail:
   destination_port: YOUR-PORT-HERE
 ```
 
-2. Include `papertrail` in your state file (`top.sls` is a great place for it):
+2. Include `papertrail` in your state file or `top.sls`, depending on which ever you prefer.
+
+In a state:
 
 ```yaml
 include:
   - papertrail
+```
+
+in `top.sls`:
+
+```yaml
+base:
+  '*':
+    - papertrail
 ```
 
 This will install `remote_syslog2` with the configured settings you set in Pillar.
