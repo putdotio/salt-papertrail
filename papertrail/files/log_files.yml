@@ -5,25 +5,25 @@ files:
 
 {% if hostname is defined -%}
 hostname: {{ hostname }}
-{% endif %}
+{% endif -%}
 
 {% if new_file_check_interval is defined -%}
 new_file_check_interval: {{ new_file_check_interval }}
-{% endif %}
+{% endif -%}
 
 {% if exclude_files is defined -%}
 exclude_files:
   {% for file in exclude_files -%}
   - {{ file }}
   {% endfor %}
-{% endif %}
+{% endif -%}
 
 {% if exclude_patterns is defined -%}
 exclude_patterns:
   {% for pattern in exclude_patterns -%}
   - {{ pattern }}
   {% endfor %}
-{% endif %}
+{% endif -%}
 
 destination:
   host: {{ destination_host }}
