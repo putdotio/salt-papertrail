@@ -85,7 +85,7 @@ This Salt formula only has one state, which does all setup and configuration. Th
   ```yaml
   papertrail:
     exclude_patterns:
-      - '\d+ things'
+      - \d+ things
   ```
 - `hostname`
 
@@ -94,7 +94,7 @@ This Salt formula only has one state, which does all setup and configuration. Th
   Example:
   ```yaml
   papertrail:
-    hostname: 'my-super-awesome-hostname'
+    hostname: my-super-awesome-hostname
   ```
 
 - `destination_host`, `destination_port`, & `destination_protocol`
@@ -106,7 +106,7 @@ This Salt formula only has one state, which does all setup and configuration. Th
   papertrail:
     destination_host: logsN.papertrailapp.com
     destination_port: XXXXX
-    destination_protocol: 'tls'
+    destination_protocol: tls
   ```
 
 - `new_file_check_interval`
